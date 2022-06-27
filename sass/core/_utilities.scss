@@ -1,0 +1,27 @@
+@use './variables' as *;
+
+.flow > * + * {
+  margin-top: var(--flow-gap, 1rem);
+}
+.d-block {
+  display: block;
+  width: 100%;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.rounded-border {
+  border-radius: var(--border-radius, 1rem);
+}
+.fw-700 {
+  font-weight: 700;
+}
+.fs-lg {
+  font-size: 3rem;
+}
+.span-reset-btn {
+  grid-column: 1 / 3;
+}
+.span-equal-btn {
+  grid-column: 3 / 5;
+}

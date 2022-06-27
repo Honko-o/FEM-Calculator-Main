@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sass/main.css" />
+    <script defer src="./app.js"></script>
+    <title>Frontend Mentor | Calculator app</title>
+  </head>
+  <body class="theme-3">
+    <main>
+      <div class="container">
+        <!-- شغلها قصة خليها بعدين -->
+        <header class="theme-header">
+          <h1>calc</h1>
+          <div class="theme-controls">
+            <p class="uppercase">Theme</p>
+            <div class="selection-control">
+              <button class="theme-1-btn"></button>
+              <button class="theme-2-btn"></button
+              ><button class="theme-3-btn active"></button>
+            </div>
+          </div>
+        </header>
+        <div class="calc flow">
+          <!-- 399981 -->
+          <div class="calc-field rounded-border fs-lg"><p></p></div>
+          <div class="calc-body rounded-border">
+            <button class="rounded-border number">7</button>
+            <button class="rounded-border number">8</button>
+            <button class="rounded-border number">9</button>
+            <button
+              class="rounded-border uppercase del-reset-style"
+              id="del-btn"
+            >
+              Del
+            </button>
+            <button class="rounded-border number">4</button>
+            <button class="rounded-border number">5</button>
+            <button class="rounded-border number">6</button>
+            <button class="rounded-border" id="add-btn">+</button>
+            <button class="rounded-border number">1</button>
+            <button class="rounded-border number">2</button>
+            <button class="rounded-border number">3</button
+            ><button class="rounded-border" id="sub-btn">-</button>
+            <button class="rounded-border number">.</button>
+            <button class="rounded-border number">0</button>
+            <button class="rounded-border" id="div-btn">/</button
+            ><button class="rounded-border" id="mul-btn">x</button>
+            <button
+              class="rounded-border operation uppercase del-reset-style span-reset-btn"
+              id="reset-btn"
+            >
+              Reset
+            </button>
+            <button
+              class="rounded-border operation equ-btn-style span-equal-btn"
+              id="equal-btn"
+            >
+              =
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

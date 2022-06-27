@@ -1,0 +1,133 @@
+@use '../core/variables' as *;
+
+.theme-1 {
+  background-color: $main-bg-theme-1;
+  color: $text-white-theme-1;
+  .selection-control {
+    background-color: $screen-bg-theme-1;
+  }
+  .calc-field {
+    background-color: $screen-bg-theme-1;
+  }
+  button {
+    &::before {
+      color: $text-white-theme-1;
+    }
+  }
+  .calc-body {
+    background-color: $keypad-bg-theme-1;
+    button {
+      color: $text-clr-theme-1;
+      background-color: $key-3-bg-theme-1;
+      box-shadow: inset 0px -4px 0px $key-3-shadow-theme-1;
+      &:active {
+        background-color: $text-white-theme-1;
+      }
+    }
+    .del-reset-style {
+      font-size: 1.5rem;
+      color: $text-white-theme-1;
+      background-color: $key-1-bg-theme-1;
+      box-shadow: inset 0px -4px 0px $key-1-shadow-theme-1;
+      &:active {
+        background-color: lighten($key-1-bg-theme-1, 15%);
+      }
+    }
+    .equ-btn-style {
+      color: $text-white-theme-1;
+      background-color: $key-2-bg-theme-1;
+      box-shadow: inset 0px -4px 0px $key-2-shadow-theme-1;
+      &:active {
+        background-color: lighten($key-2-bg-theme-1, 15%);
+      }
+    }
+  }
+}
+
+.theme-2 {
+  background-color: $main-bg-theme-2;
+  color: $text-clr-theme-2;
+  .selection-control {
+    background-color: $keypad-bg-theme-2;
+  }
+  .calc-field {
+    background-color: $screen-bg-theme-2;
+  }
+  button {
+    &::before {
+      color: $text-clr-theme-2;
+    }
+  }
+  .calc-body {
+    background-color: $keypad-bg-theme-2;
+    button {
+      color: $text-clr-theme-2;
+      background-color: $key-3-bg-theme-2;
+      box-shadow: inset 0px -4px 0px $key-3-shadow-theme-2;
+      &:active {
+        background-color: $text-white-theme-2;
+      }
+    }
+    .del-reset-style {
+      font-size: 1.5rem;
+      color: $text-white-theme-2;
+      background-color: $key-1-bg-theme-2;
+      box-shadow: inset 0px -4px 0px $key-1-shadow-theme-2;
+      &:active {
+        background-color: lighten($key-1-bg-theme-2, 15%);
+      }
+    }
+    .equ-btn-style {
+      color: $text-white-theme-2;
+      background-color: $key-2-bg-theme-2;
+      box-shadow: inset 0px -4px 0px $key-2-shadow-theme-2;
+      &:active {
+        background-color: lighten($key-2-bg-theme-2, 15%);
+      }
+    }
+  }
+}
+
+.theme-3 {
+  background-color: $main-bg-theme-3;
+  color: $text-clr-1-theme-3;
+  .selection-control {
+    background-color: $keypad-bg-theme-3;
+  }
+  .calc-field {
+    background-color: $screen-bg-theme-3;
+  }
+  button {
+    &::before {
+      color: $text-clr-1-theme-3;
+    }
+  }
+  .calc-body {
+    background-color: $screen-bg-theme-3;
+    button {
+      color: $text-clr-1-theme-3;
+      background-color: $key-3-bg-theme-3;
+      box-shadow: inset 0px -4px 0px $key-3-shadow-theme-3;
+      &:active {
+        background-color: lighten($key-3-bg-theme-3, 25%);
+      }
+    }
+    .del-reset-style {
+      font-size: 1.5rem;
+      color: $text-white-theme-3;
+      background-color: $key-1-bg-theme-3;
+      box-shadow: inset 0px -4px 0px $key-1-shadow-theme-3;
+      &:active {
+        background-color: lighten($key-1-bg-theme-3, 15%);
+      }
+    }
+    .equ-btn-style {
+      color: $text-clr-2-theme-3;
+      background-color: $key-2-bg-theme-3;
+      box-shadow: inset 0px -4px 0px $key-2-shadow-theme-3;
+      &:active {
+        background-color: lighten($key-2-bg-theme-3, 15%);
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@use '../core/variables' as *;
+
+.theme-header {
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    font-size: 2rem;
+    transform: translateY(-10px);
+  }
+}
+
+.theme-controls {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  p {
+    font-size: 1rem;
+  }
+}
+
+.selection-control {
+  counter-reset: theme-incrementer;
+  position: relative;
+  border-radius: 40px;
+  min-width: 100px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 70%;
+  button {
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    height: 20px;
+    width: 20px;
+    &.theme-1-btn {
+      background-color: $key-2-bg-theme-1;
+    }
+    &.theme-2-btn {
+      background-color: $key-2-bg-theme-2;
+    }
+    &.theme-3-btn {
+      background-color: $key-1-bg-theme-3;
+    }
+    &:not(.active) {
+      background-color: transparent;
+    }
+    &::before {
+      content: counter(theme-incrementer);
+      counter-increment: theme-incrementer;
+      display: flex;
+      justify-content: space-around;
+      position: absolute;
+      font-size: 1rem;
+      top: -25px;
+    }
+  }
+}
