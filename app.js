@@ -25,47 +25,22 @@ themeBtn.forEach((button) =>
 
 // Functionality Part
 const calcField = document.querySelector('.calc-field');
-const numbers = Array.from(document.querySelectorAll('.number'));
+const numbersBtn = Array.from(document.querySelectorAll('.number'));
+const operations = Array.from(document.querySelectorAll('.operation'));
 const delBtn = document.getElementById('del-btn');
-const mulBtn = document.getElementById('mul-btn');
-const divBtn = document.getElementById('div-btn');
-const addBtn = document.getElementById('add-btn');
-const subBtn = document.getElementById('sub-btn');
 const resetBtn = document.getElementById('reset-btn');
 const equBtn = document.getElementById('equal-btn');
-
-let firstNum = calcField.children[0].innerText;
-let secNum = '';
 let result = 0;
-let isFirstTime = true;
-let isAdd = false;
-let isSub = false;
-let isMul = false;
-let isDiv = false;
 
 const changeContentSpace = () => {
   if (
     calcField.children[0].offsetWidth > calcField.offsetWidth - 20 ||
     calcField.children[0].innerText.length >= 12
   ) {
-    // console.log('font-size = 1rem');
     calcField.style.fontSize = '1rem';
   } else {
-    // console.log('font-size = deleted');
     calcField.style.removeProperty('font-size');
   }
-};
-const changeSecondOrFirstNum = () => {
-  if (!isAdd && !isSub && !isMul && !isDiv) {
-    firstNum = +calcField.children[0].innerText;
-  } else if (isAdd || isSub || isMul || isAdd) {
-    secNum = +calcField.children[0].innerText;
-  }
-};
-const typeNumber = (e) => {
-  calcField.children[0].innerText += e.target.innerText;
-  changeSecondOrFirstNum();
-  changeContentSpace();
 };
 const delNumber = () => {
   const numberLength = calcField.children[0].innerText.length;
@@ -76,37 +51,34 @@ const delNumber = () => {
   }
   numberArray.pop();
   calcField.children[0].innerText = numberArray.join('');
-  changeSecondOrFirstNum();
   changeContentSpace();
 };
-// I am stuck here
-const addNumber = () => {
-  if (isFirstTime) {
-    result += +firstNum + +secNum;
-    isFirstTime = false;
-  } else {
-    result += +secNum;
-  }
-  if (firstNum === 0 || firstNum === '') {
-    return;
-  }
-  // Here is the Problem
-  if (isAdd) {
-    calcField.children[0].innerText = result;
-    isAdd = false;
-  } else {
-    calcField.children[0].innerText = '';
-  }
-
-  isAdd = true;
-  console.log(`firstNum = ${firstNum}`);
-  console.table(`secondNum = ${secNum}`);
-  console.log(`result = ${result}`);
+const printOperationOrNumber = (e) => {
+  console.log(e.target.innerText);
+  calcField.children[0].innerText += e.target.innerText;
+  changeContentSpace();
+};
+const reset = () => {
+  calcField.children[0].innerText = '';
+  result = 5;
 };
 
-numbers.forEach((number) => number.addEventListener('click', typeNumber));
-addBtn.addEventListener('click', addNumber);
+// هان الشغل
+const calculateExpression = () => {
+  let operands = [];
+  let numbers = [];
+};
+
+numbersBtn.forEach((number) => {
+  number.addEventListener('click', printOperationOrNumber);
+});
+operations.forEach((operation) =>
+  operation.addEventListener('click', printOperationOrNumber)
+);
+
 delBtn.addEventListener('click', delNumber);
+equBtn.addEventListener('click', calculateExpression);
+resetBtn.addEventListener('click', reset);
 
 // const subNumber = () => {};
 // const mulNumber = () => {};
