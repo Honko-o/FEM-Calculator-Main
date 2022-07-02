@@ -1,5 +1,7 @@
 @use '../core/variables' as *;
 
+// Default Theme
+body,
 .theme-1 {
   background-color: $main-bg-theme-1;
   color: $text-white-theme-1;

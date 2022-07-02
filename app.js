@@ -1,26 +1,32 @@
-const themeBtn = Array.from(
+import * as helpers from './helpers.js';
+
+const themeBtns = Array.from(
   document.querySelectorAll('.selection-control button')
 );
 
 const changeTheme = (e) => {
-  // Get The Number of Clicked Element with indexOf + 1
-  const themeNumber = themeBtn.indexOf(e.target) + 1;
-  // Remove Theme Classes on The Body
-  document.body.classList.remove('theme-1', 'theme-2', 'theme-3');
-  // Add Theme Class on The Body
-  document.body.classList.add(`theme-${themeNumber}`);
+  const themeNumber = themeBtns.indexOf(e.target) + 1;
+  helpers.default.changeBodyTheme(themeNumber);
+  window.localStorage.setItem('theme', `${themeNumber}`);
 };
 
-const selectActiveTheme = (e) => {
-  // Remove Every Active Class
-  themeBtn.forEach((el) => el.classList.remove('active'));
-  // Add Active Class on the Clicked Element
+const selectClickedActiveTheme = (e) => {
+  themeBtns.forEach((el) => el.classList.remove('active'));
   e.target.classList.add('active');
   changeTheme(e);
 };
 
-themeBtn.forEach((button) =>
-  button.addEventListener('click', selectActiveTheme)
+if (window.localStorage.getItem('theme')) {
+  const themeNumber = window.localStorage.getItem('theme');
+  helpers.default.changeBodyTheme(themeNumber);
+  helpers.default.addThemeBtnActiveClass(themeBtns, themeNumber);
+} else {
+  helpers.default.changeBodyTheme('1');
+  themeBtns[0].classList.add('active');
+}
+
+themeBtns.forEach((button) =>
+  button.addEventListener('click', selectClickedActiveTheme)
 );
 
 // Functionality Part
@@ -42,6 +48,7 @@ const changeContentSpace = () => {
     calcField.style.removeProperty('font-size');
   }
 };
+
 const delNumber = () => {
   const numberLength = calcField.children[0].innerText.length;
   const numberArray = calcField.children[0].innerText.split('');
@@ -53,35 +60,64 @@ const delNumber = () => {
   calcField.children[0].innerText = numberArray.join('');
   changeContentSpace();
 };
+
 const printOperationOrNumber = (e) => {
-  console.log(e.target.innerText);
   calcField.children[0].innerText += e.target.innerText;
   changeContentSpace();
 };
+
 const reset = () => {
   calcField.children[0].innerText = '';
-  result = 5;
+  result = 0;
 };
 
-// هان الشغل
 const calculateExpression = () => {
-  let operands = [];
-  let numbers = [];
+  const expression = calcField.children[0].innerText
+    .replace(/,/g, '')
+    .replace(/x/g, '*');
+  result = Number(helpers.default.parseExpression(expression)()).toLocaleString(
+    'en'
+  );
+  calcField.children[0].innerText = result;
+  changeContentSpace();
 };
 
+// Event Listeners
 numbersBtn.forEach((number) => {
   number.addEventListener('click', printOperationOrNumber);
 });
 operations.forEach((operation) =>
   operation.addEventListener('click', printOperationOrNumber)
 );
-
 delBtn.addEventListener('click', delNumber);
 equBtn.addEventListener('click', calculateExpression);
 resetBtn.addEventListener('click', reset);
-
-// const subNumber = () => {};
-// const mulNumber = () => {};
-// const divNumber = () => {};
-// const reset = () => {};
-// const equalResult = () => {};
+document.addEventListener('keypress', (e) => {
+  console.log(e.key);
+  switch (e.key) {
+    case '.':
+    case '0':
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+    case '7':
+    case '8':
+    case '9':
+    case '+':
+    case '-':
+    case '/':
+    case '*':
+    case 'x':
+      calcField.children[0].innerText += e.key;
+      break;
+    case '=':
+      calculateExpression();
+      break;
+    case 'Backspace':
+      delNumber();
+      break;
+  }
+});
