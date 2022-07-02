@@ -110,6 +110,17 @@ body {
   grid-column: 3/5;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 :root {
   --flow-gap: 1.5rem;
   --border-radius: 0.75rem;
@@ -126,7 +137,7 @@ body {
 }
 
 .container {
-  width: 340px;
+  width: 500px;
   margin: 2rem auto;
 }
 
